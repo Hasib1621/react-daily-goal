@@ -1,3 +1,7 @@
+About this project: This project is about storing daily goals in an array with delete functionality.  This project is made by basic react.
+
+Hook used: useState only.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
