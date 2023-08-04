@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import GoalInput from './components/GoalInput/GoalInput';
+import GoalList from './components/GoalList/GoalList';
+
+const initialGoals = [
+  { id: 'g1', text: 'Doing Exercise' },
+  { id: 'g2', text: 'Doing Breakfast' },
+];
 
 function App() {
+  const [goals, setGoals] = useState(initialGoals);
+
+  const addGoalsHandler = (goal) => {
+    setGoals((prevGoals) => {
+      return [goal, ...prevGoals];
+    });
+  };
+
+  const deleteGoalHandler = (goalId) => {
+    setGoals((prevGoal) => {
+      const newGoalsList = prevGoal.filter((goal) => goal.id !== goalId);
+      return newGoalsList;
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <section id='goal-form'>
+        <GoalInput onAdd={addGoalsHandler} />
+      </section>
+      <section id='goals'>
+        {goals.length === 0 ? (
+          <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+        ) : (
+          <GoalList goals={goals} onDelete={deleteGoalHandler} />
+        )}
+      </section>
     </div>
   );
 }
