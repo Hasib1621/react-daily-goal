@@ -1,4 +1,8 @@
-About this project: This project is about storing daily goals in an array with delete functionality.  This project is made by basic react.
+# Live Demo:
+https://react-daily-goal.netlify.app/
+
+# About this project: 
+This project is about storing daily goals in an array with delete functionality.  This project is made by basic react.
 
 Hook used: useState only.
 
